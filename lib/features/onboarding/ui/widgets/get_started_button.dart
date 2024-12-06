@@ -1,3 +1,5 @@
+import 'package:doctoapp/core/helpers/extensions.dart';
+import 'package:doctoapp/core/routing/routes.dart';
 import 'package:doctoapp/core/themes/colors.dart';
 import 'package:doctoapp/core/themes/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,9 @@ class GetStartedButton extends StatelessWidget {
         horizontal: 32.w,
       ),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          context.pushNamed(AppRoutes.loginRoute);
+        },
         style: TextButton.styleFrom(
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           minimumSize: const Size(double.infinity, 60),
