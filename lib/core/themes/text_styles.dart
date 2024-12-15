@@ -27,6 +27,12 @@ class TextStyles {
     color: ColorsManger.mainBlue,
   );
 
+  static TextStyle font12RegularGrey = const TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeightsHelper.regular,
+    color: ColorsManger.greyColor,
+  );
+
   static TextStyle font14RegularGrey = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeightsHelper.regular,
@@ -38,6 +44,19 @@ class TextStyles {
     fontWeight: FontWeightsHelper.medium,
     color: ColorsManger.blackColor,
   );
+
+   static TextStyle font14SemiBoldBlue = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeightsHelper.semiBold,
+    color: ColorsManger.mainBlue,
+  );
+
+    static TextStyle font15MediumBlack = const TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeightsHelper.medium,
+    color: ColorsManger.blackColor,
+  );
+
   static TextStyle font14MediumBlue = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeightsHelper.medium,

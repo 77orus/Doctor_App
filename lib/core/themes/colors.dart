@@ -7,4 +7,6 @@ class ColorsManger {
   static const Color whiteColor = Color(0xffffffff);
   static const Color lightGreyColor = Color(0xffC2C2C2);
   static const Color filledGreyColor = Color(0xffFDFDFF);
+  static const Color redColor = Color(0xffFF0000);
+  static const Color greenColor = Color(0xff00FF00);
 }
