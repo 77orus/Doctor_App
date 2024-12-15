@@ -1,8 +1,8 @@
 import 'package:doctoapp/core/themes/text_styles.dart';
 import 'package:flutter/material.dart';
 
-class DontHaveAnAccountSignUp extends StatelessWidget {
-  const DontHaveAnAccountSignUp({super.key});
+class AlreadyHaveAccountSignup extends StatelessWidget {
+  const AlreadyHaveAccountSignup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class DontHaveAnAccountSignUp extends StatelessWidget {
         TextSpan(
           children: [
             TextSpan(
-              text: "Don't have an account?",
+              text: "Already have an account?",
               style: TextStyles.font14RegularGrey,
             ),
             TextSpan(

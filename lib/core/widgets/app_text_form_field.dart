@@ -11,7 +11,6 @@ class AppTextFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final Widget? suffixIcon;
   final bool obscureText;
-  final Function(String?)? validator;
 
   const AppTextFormField({
     super.key,
@@ -23,16 +22,12 @@ class AppTextFormField extends StatelessWidget {
     this.contentPadding,
     this.suffixIcon,
     this.obscureText = false,
-    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      validator: (value) {
-        return validator!(value);
-      },
       obscureText: obscureText,
       decoration: InputDecoration(
         filled: true,
