@@ -1,23 +1,17 @@
 import 'package:doctoapp/core/helpers/padding_helpers.dart';
 import 'package:doctoapp/core/themes/text_styles.dart';
 import 'package:doctoapp/core/widgets/app_text_button.dart';
-import 'package:doctoapp/core/widgets/app_text_form_field.dart';
+import 'package:doctoapp/features/login/logic/cubit/login_cubit.dart';
 import 'package:doctoapp/features/login/ui/widgets/already_have_account_signup.dart';
+import 'package:doctoapp/features/login/ui/widgets/email_and_password.dart';
+import 'package:doctoapp/features/login/ui/widgets/login_bloc_listner.dart';
 import 'package:doctoapp/features/login/ui/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  bool obscureText = true;
-
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -42,31 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyles.font14RegularGrey,
                 ),
                 verticalSpace(36),
-                Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      const AppTextFormField(
-                        hintText: "Email",
-                      ),
-                      verticalSpace(16),
-                      AppTextFormField(
-                        hintText: "Password",
-                        obscureText: obscureText,
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              obscureText = !obscureText;
-                            });
-                          },
-                          icon: obscureText
-                              ? const Icon(Icons.visibility_off)
-                              : const Icon(Icons.visibility),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                const EmailAndPassword(),
                 verticalSpace(25),
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,
@@ -76,18 +46,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 verticalSpace(32),
-                const AppTextButton(
+                AppTextButton(
+                  onPressed: () {
+                    validateThenDoLogin(context);
+                  },
                   title: "Login",
                 ),
                 verticalSpace(50),
                 const TermsAndConditions(),
                 verticalSpace(32),
-                const AlreadyHaveAccountSignup(),
+                const DontHaveAnAccountSignUp(),
+                const LoginBlocListner(),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void validateThenDoLogin(BuildContext context) {
+    if (context.read<LoginCubit>().loginFormKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLogin();
+    }
   }
 }
