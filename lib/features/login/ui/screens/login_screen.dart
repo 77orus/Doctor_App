@@ -2,7 +2,7 @@ import 'package:doctoapp/core/helpers/padding_helpers.dart';
 import 'package:doctoapp/core/themes/text_styles.dart';
 import 'package:doctoapp/core/widgets/app_text_button.dart';
 import 'package:doctoapp/features/login/logic/cubit/login_cubit.dart';
-import 'package:doctoapp/features/login/ui/widgets/already_have_account_signup.dart';
+import 'package:doctoapp/features/login/ui/widgets/dont_have_account_signup.dart';
 import 'package:doctoapp/features/login/ui/widgets/email_and_password.dart';
 import 'package:doctoapp/features/login/ui/widgets/login_bloc_listner.dart';
 import 'package:doctoapp/features/login/ui/widgets/terms_and_conditions.dart';
@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                verticalSpace(50),
+                verticalSpace(30),
                 Text(
                   "Welcome Back",
                   style: TextStyles.font24BoldBlue,
