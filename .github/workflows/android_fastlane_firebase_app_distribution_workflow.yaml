@@ -9,6 +9,8 @@ on:
 jobs:
   distribute_to_firebase:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
     - name: Checkout my repo code
       uses: actions/checkout@v2       
