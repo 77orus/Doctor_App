@@ -1,4 +1,4 @@
-name : "Andoird Fastlane Firebase App Distribution Workflow"
+name : Andoird Fastlane Firebase App Distribution Workflow
 
 on:
   push:
