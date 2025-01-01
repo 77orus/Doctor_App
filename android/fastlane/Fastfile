@@ -1,0 +1,32 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Lane for Andoird firebase app distripution"
+  lane :firebase_distripution do
+    sh "flutter clean"
+    sh "flutter build apk --flavor production -t lib/production_main.dart --no-tree-shake-icons"
+    firebase_app_distribution(
+      app: "1:492954973495:android:2f312748f9b6efb95516b2",
+      firebase_cli_token:ENV['FIREBASE_CLI_TOKEN'] ,
+      android_artifact_type: "APK",
+      android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
+      testers: "hosam7orus@gmail.com",
+      release_notes: "my first fastlane with firebase app distripution for docdoc app"
+    )
+  end
+end
