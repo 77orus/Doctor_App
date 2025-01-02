@@ -15,10 +15,10 @@ jobs:
     - name: Checkout my repo code
       uses: actions/checkout@v2       
 
-    - name: Set Up JDK 11
+    - name: Set Up JDK 17
       uses: actions/setup-java@v2
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'temurin'  
 
     - name: Install Flutter
