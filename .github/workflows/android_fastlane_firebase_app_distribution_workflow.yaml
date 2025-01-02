@@ -33,12 +33,6 @@ jobs:
         bundler-cache: true
         working-directory: android
 
-    - name: Add Linux platform to Gemfile.lock
-      run: |
-        bundle lock --add-platform x86_64-linux
-        bundle lock --add-platform x64-mingw-ucrt
-      working-directory: android
-
     - name: Install Dependencies
       run: bundle install
       working-directory: android
