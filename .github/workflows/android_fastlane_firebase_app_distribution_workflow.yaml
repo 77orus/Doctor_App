@@ -1,10 +1,9 @@
-name : Andoird Fastlane Firebase App Distribution Workflow
+name: Android Fastlane Firebase App Distribution Workflow
 
 on:
   push:
     branches:
-      - master 
-
+      - master
 
 jobs:
   distribute_to_firebase:
@@ -22,7 +21,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'  
 
-
     - name: Install Flutter
       uses: subosito/flutter-action@v2
       with:
@@ -35,22 +33,18 @@ jobs:
         bundler-cache: true
         working-directory: android
 
-    - name: Reset Gemfile.lock
+    - name: Add Linux platform to Gemfile.lock
       run: |
-        rm -f Gemfile.lock
-        bundle install --add-platform x86_64-linux --add-platform x64-mingw-ucrt
+        bundle lock --add-platform x86_64-linux
+        bundle lock --add-platform x64-mingw-ucrt
       working-directory: android
-
 
     - name: Install Dependencies
       run: bundle install
       working-directory: android
-  
-
 
     - name: Build and distribute app
       env:
         FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}        
-      run:
-        bundle exec fastlane android firebase_distripution
-      working-directory: android  
+      run: bundle exec fastlane android firebase_distripution
+      working-directory: android
