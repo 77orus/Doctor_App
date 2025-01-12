@@ -1,13 +1,17 @@
 import 'package:doctoapp/core/helpers/images.dart';
 import 'package:doctoapp/core/themes/text_styles.dart';
+import 'package:doctoapp/features/home/data/models/home_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/padding_helpers.dart';
 
 class RecommendedDoctorsItem extends StatelessWidget {
+  final List<Doctors> doctorsData;
+  final int index;
   const RecommendedDoctorsItem({
     super.key,
+    required this.doctorsData, required this.index,
   });
 
   @override
@@ -31,13 +35,13 @@ class RecommendedDoctorsItem extends StatelessWidget {
           flex: 2,
           child: ListTile(
             title: Text(
-              'Dr. John Doe',
+              doctorsData[index].name ?? "Default Name",
               style: TextStyles.font18BoldBlack,
             ),
             subtitle: Column(
               children: [
                 Text(
-                  "MBBS, MD - General Medicine, DM - Cardiology",
+                  doctorsData[index].description ?? "default description",
                   overflow: TextOverflow.ellipsis,
                   style: TextStyles.font14RegularGrey,
                 ),

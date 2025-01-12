@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:doctoapp/features/home/data/models/home_response_model.dart';
 import 'package:doctoapp/features/login/data/models/login_request_model.dart';
 import 'package:doctoapp/features/login/data/models/login_response_model.dart';
 import 'package:doctoapp/features/register/data/models/register_request_model.dart';
@@ -21,4 +22,8 @@ abstract class ApiServices {
 
   @POST('api/register')
   Future<RegisterResponseModel> register(@Body() RegisterRequestModel registerRequestModel);
+
+
+  @GET("api/getCategoriesWithDoctors")
+  Future<HomeResponseModel> getCategoriesWithDoctors();
 }
