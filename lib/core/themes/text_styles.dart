@@ -73,4 +73,10 @@ class TextStyles {
     fontWeight: FontWeightsHelper.bold,
     color: ColorsManger.whiteColor,
   );
+
+  static TextStyle font18BoldBlack = const TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeightsHelper.bold,
+    color: ColorsManger.blackColor,
+  );
 }

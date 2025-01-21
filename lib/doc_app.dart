@@ -1,5 +1,5 @@
 import 'package:doctoapp/core/routing/router.dart';
-import 'package:doctoapp/features/onboarding/ui/screens/on_boarding_Screen.dart';
+import 'package:doctoapp/features/home/ui/screens/home_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +20,7 @@ class DocApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: const OnBoardingScreen(),
+        home: const HomeScreen(),
         onGenerateRoute: appRouter.onGenerateRoute,
       ),
     );
