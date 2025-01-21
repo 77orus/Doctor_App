@@ -1,6 +1,6 @@
 import 'package:doctoapp/core/helpers/extensions.dart';
-import 'package:doctoapp/core/helpers/shared_pref_keys.dart';
 import 'package:doctoapp/core/helpers/shared_pref_helper.dart';
+import 'package:doctoapp/core/helpers/shared_pref_keys.dart';
 import 'package:doctoapp/core/routing/router.dart';
 import 'package:doctoapp/features/home/ui/screens/home_Screen.dart';
 import 'package:doctoapp/features/login/ui/screens/login_screen.dart';
@@ -32,7 +32,7 @@ class DocApp extends StatelessWidget {
 }
 
 checkTokenIfNull() async {
-  String? token = await SharedPrefHelper.getString(SharedPrefKeys.tokenKey);
+  String? token = await SharedPrefHelper.getSecureData(SharedPrefKeys.tokenKey);
   if (token.isEmptyOrNull()) {
     isLoggedIn = false;
   }

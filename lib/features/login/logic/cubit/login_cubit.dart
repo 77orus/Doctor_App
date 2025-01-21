@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:doctoapp/core/helpers/shared_pref_keys.dart';
 import 'package:doctoapp/core/helpers/shared_pref_helper.dart';
+import 'package:doctoapp/core/helpers/shared_pref_keys.dart';
 import 'package:doctoapp/features/login/data/models/login_request_model.dart';
 import 'package:doctoapp/features/login/data/repositorys/login_repo.dart';
 import 'package:doctoapp/features/login/logic/cubit/login_state.dart';
@@ -25,10 +25,9 @@ class LoginCubit extends Cubit<LoginState> {
       ),
     );
     response.when(
-      success: (loginResponse) async  {
+      success: (loginResponse) async {
         await saveToken(loginResponse.data.token);
         emit(LoginState.success(loginResponse));
-         
       },
       failure: (error) {
         emit(LoginState.failure(
@@ -38,10 +37,6 @@ class LoginCubit extends Cubit<LoginState> {
   }
 }
 
-
-  
-
-  
 Future<void> saveToken(String token) async {
-  await SharedPrefHelper.setData(SharedPrefKeys.tokenKey, token);
+  await SharedPrefHelper.setSecureData(SharedPrefKeys.tokenKey, token);
 }
