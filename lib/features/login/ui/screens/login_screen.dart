@@ -1,3 +1,4 @@
+import 'package:doctoapp/core/di/dependency_injection.dart';
 import 'package:doctoapp/core/helpers/padding_helpers.dart';
 import 'package:doctoapp/core/themes/text_styles.dart';
 import 'package:doctoapp/core/widgets/app_text_button.dart';
@@ -15,59 +16,66 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 32.w,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                verticalSpace(30),
-                Text(
-                  "Welcome Back",
-                  style: TextStyles.font24BoldBlue,
-                ),
-                verticalSpace(8),
-                Text(
-                  "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
-                  style: TextStyles.font14RegularGrey,
-                ),
-                verticalSpace(36),
-                const EmailAndPassword(),
-                verticalSpace(25),
-                Align(
-                  alignment: AlignmentDirectional.bottomEnd,
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyles.font12RegularBlue,
+    return BlocProvider(
+      create: (context) => getIt<LoginCubit>(),
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 32.w,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  verticalSpace(30),
+                  Text(
+                    "Welcome Back",
+                    style: TextStyles.font24BoldBlue,
                   ),
-                ),
-                verticalSpace(32),
-                AppTextButton(
-                  onPressed: () {
-                    validateThenDoLogin(context);
-                  },
-                  title: "Login",
-                ),
-                verticalSpace(50),
-                const TermsAndConditions(),
-                verticalSpace(32),
-                const DontHaveAnAccountSignUp(),
-                const LoginBlocListner(),
-              ],
+                  verticalSpace(8),
+                  Text(
+                    "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
+                    style: TextStyles.font14RegularGrey,
+                  ),
+                  verticalSpace(36),
+                  const EmailAndPassword(),
+                  verticalSpace(25),
+                  Align(
+                    alignment: AlignmentDirectional.bottomEnd,
+                    child: Text(
+                      "Forgot Password?",
+                      style: TextStyles.font12RegularBlue,
+                    ),
+                  ),
+                  verticalSpace(32),
+                  Builder(
+                    builder: (context) {
+                      return AppTextButton(
+                        onPressed: () {
+                          if (context
+                              .read<LoginCubit>()
+                              .loginFormKey
+                              .currentState!
+                              .validate()) {
+                            context.read<LoginCubit>().emitLogin();
+                          }
+                        },
+                        title: "Login",
+                      );
+                    }
+                  ),
+                  verticalSpace(50),
+                  const TermsAndConditions(),
+                  verticalSpace(32),
+                  const DontHaveAnAccountSignUp(),
+                  const LoginBlocListner(),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
-  }
-
-  void validateThenDoLogin(BuildContext context) {
-    if (context.read<LoginCubit>().loginFormKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLogin();
-    }
   }
 }
