@@ -9,7 +9,7 @@ part of 'home_response_model.dart';
 HomeResponseModel _$HomeResponseModelFromJson(Map<String, dynamic> json) =>
     HomeResponseModel(
       message: json['message'] as String,
-      data: (json['data'] as List<dynamic>)
+      categoriesData: (json['data'] as List<dynamic>)
           .map((e) => CategoriesData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,7 +17,7 @@ HomeResponseModel _$HomeResponseModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$HomeResponseModelToJson(HomeResponseModel instance) =>
     <String, dynamic>{
       'message': instance.message,
-      'data': instance.data,
+      'data': instance.categoriesData,
     };
 
 CategoriesData _$CategoriesDataFromJson(Map<String, dynamic> json) =>

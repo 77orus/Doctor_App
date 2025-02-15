@@ -1,14 +1,11 @@
-
-import 'package:doctoapp/core/helpers/padding_helpers.dart';
 import 'package:doctoapp/features/home/logic/cubit/home_cubit.dart';
 import 'package:doctoapp/features/home/logic/cubit/home_state.dart';
 import 'package:doctoapp/features/home/ui/widgets/doctor_speciality_list_view.dart';
-import 'package:doctoapp/features/home/ui/widgets/recommended_doctor_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CategoriesAndDoctorsBlocBuilder extends StatelessWidget {
-  const CategoriesAndDoctorsBlocBuilder({super.key});
+class CategoriesBlocBuilder extends StatelessWidget {
+  const CategoriesBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +19,11 @@ class CategoriesAndDoctorsBlocBuilder extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           },
-          success: (value) {
+          success: (categoriesData) {
             return Expanded(
               child: Column(
                 children: [
-                  DoctorSpecialityListView(categoriesData: value.data),
-                  verticalSpace(16),
-                  RecommendedDoctorListView(
-                    doctorsData: value.data[0].doctorsData,
-                  ),
+                  DoctorSpecialityListView(categoriesData: categoriesData),
                 ],
               ),
             );

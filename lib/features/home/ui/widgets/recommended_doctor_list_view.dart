@@ -8,6 +8,7 @@ class RecommendedDoctorListView extends StatelessWidget {
   const RecommendedDoctorListView({super.key, required this.doctorsData});
 
   @override
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
@@ -18,7 +19,7 @@ class RecommendedDoctorListView extends StatelessWidget {
             padding: EdgeInsets.only(
               bottom: 16.0.h,
             ),
-            child:  RecommendedDoctorsItem(
+            child: RecommendedDoctorsItem(
               doctorsData: doctorsData,
               index: index,
             ),

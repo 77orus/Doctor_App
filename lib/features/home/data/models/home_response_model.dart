@@ -5,9 +5,10 @@ part 'home_response_model.g.dart';
 @JsonSerializable()
 class HomeResponseModel {
   final String message;
-  final List<CategoriesData> data;
+  @JsonKey(name: 'data')
+  final List<CategoriesData> categoriesData;
 
-  HomeResponseModel({required this.message, required this.data});
+  HomeResponseModel({required this.message, required this.categoriesData});
 
   factory HomeResponseModel.fromJson(Map<String, dynamic> json) =>
       _$HomeResponseModelFromJson(json);
@@ -25,7 +26,7 @@ class CategoriesData {
       {required this.id,
       required this.name,
       required this.image,
-      required this.doctorsData});
+      required this.doctorsData,});
 
   factory CategoriesData.fromJson(Map<String, dynamic> json) =>
       _$CategoriesDataFromJson(json);
@@ -48,7 +49,7 @@ class Doctors {
       required this.email,
       required this.phone,
       required this.experience,
-      required this.description});
+      required this.description,});
 
   factory Doctors.fromJson(Map<String, dynamic> json) =>
       _$DoctorsFromJson(json);
